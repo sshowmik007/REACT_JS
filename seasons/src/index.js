@@ -1,20 +1,10 @@
 import React from 'react' ;
 import  ReactDOM from 'react-dom';
 import SeasonDisplay from './SeasonDisplay';
+import Spinner from './Spinner';
 
 class App extends React.Component {
-    //react says we have to use render
-    //constructor()
-
-
-    // constructor(props){
-    //     super(props);
-    //     //this is the only time we do dirct assignment to this.state
-    //     this.state={lat: null, errorMessage: ''};
-        
-    // }
-    
-
+  
     state={lat: null, errorMessage: ''};  //constructing a func
     
     componentDidMount(){
@@ -29,16 +19,29 @@ class App extends React.Component {
         );
     }
 
-        render(){
-            if(this.state.errorMessage && !this.state.lat){
-                return <div>Error: { this.state.errorMessage }</div>;
-            }
-            if(!this.state.errorMessage && this.state.lat){
-                // return <div>Latitude: { this.state.lat }</div>;
-                return <SeasonDisplay lat={this.state.lat} />
-            }
 
-            return <div>Loading!</div>
+    //helper method
+
+    renderContent(){
+        if(this.state.errorMessage && !this.state.lat){
+            return <div>Error: { this.state.errorMessage }</div>;
+        }
+        if(!this.state.errorMessage && this.state.lat){
+            // return <div>Latitude: { this.state.lat }</div>;
+            return <SeasonDisplay lat={this.state.lat} />
+        }
+
+        return <Spinner message="please accept location request"/>
+    }
+
+
+
+        render(){
+            return(
+                <div className="border red">
+                    {this.renderContent()}
+                </div>
+            );
         };
 
 

@@ -18,12 +18,12 @@ const App = () => {
 
     <Grid justify= "center" container spacing={16}>
       <Grid item xs={12}>
-        <Grid container spacing = {16}>
+        <Grid container spacing = {6}>
           <Grid item xs ={12}>
           <SearchBar onFormSubmit={search} />
             {/* Search bar */}
           </Grid>
-          <Grid item xs ={8}>
+          <Grid item xs ={6}>
             {/* Viideo DEtails */}
             <VideoDetail video={selectedVideo} />
           </Grid>
